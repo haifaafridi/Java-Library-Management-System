@@ -22,6 +22,12 @@ class RegularCustomer extends Customer {
 
     @Override
     public void returnBook(Book book) {
-        book.returnBook();
+        if (borrowedBooks.contains(book)) {
+            book.returnBook();
+            borrowedBooks.remove(book);
+        } else {
+            System.out.println("This book was not borrowed by you.");
+        }
     }
+
 }
