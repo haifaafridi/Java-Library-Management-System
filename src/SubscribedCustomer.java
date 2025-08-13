@@ -11,18 +11,23 @@ class SubscribedCustomer extends Customer {
 
     @Override
     public void borrowBook(Book book) {
-        book.borrowBook(customerID);
-        borrowHistory.add(book);
+        if (book.isAvailable()) {
+            book.borrowBook(customerID);
+            borrowedBooks.add(book);
+            borrowHistory.add(book);
+        }
     }
 
     @Override
     public void returnBook(Book book) {
-        if (borrowedBooks.contains(book)) {
+        // Check if the book was borrowed by this specific customer
+        if (book.getBorrowedByID() == customerID && borrowedBooks.contains(book)) {
             book.returnBook();
             borrowedBooks.remove(book);
-        } else {
+        } else if (book.getBorrowedByID() != customerID) {
             System.out.println("This book was not borrowed by you.");
+        } else {
+            System.out.println("You haven't borrowed this book.");
         }
     }
-
 }

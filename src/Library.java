@@ -109,7 +109,6 @@ class Library {
     }
 
 
-
     private void loginManager() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter manager username: ");
@@ -121,7 +120,7 @@ class Library {
             if (manager.login(username, password)) {
                 System.out.println("Login successful.");
                 manager.manageLibrary(this);
-
+                return;
             }
         }
 

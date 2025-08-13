@@ -22,11 +22,14 @@ class RegularCustomer extends Customer {
 
     @Override
     public void returnBook(Book book) {
-        if (borrowedBooks.contains(book)) {
+
+        if (book.getBorrowedByID() == customerID && borrowedBooks.contains(book)) {
             book.returnBook();
             borrowedBooks.remove(book);
-        } else {
+        } else if (book.getBorrowedByID() != customerID) {
             System.out.println("This book was not borrowed by you.");
+        } else {
+            System.out.println("You haven't borrowed this book.");
         }
     }
 
