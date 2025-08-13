@@ -20,7 +20,7 @@ class SubscribedCustomer extends Customer {
 
     @Override
     public void returnBook(Book book) {
-        // Check if the book was borrowed by this specific customer
+        
         if (book.getBorrowedByID() == customerID && borrowedBooks.contains(book)) {
             book.returnBook();
             borrowedBooks.remove(book);
