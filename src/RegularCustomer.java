@@ -11,9 +11,13 @@ class RegularCustomer extends Customer {
     @Override
     public void borrowBook(Book book) {
         if (borrowedBooks.size() < 2) {
-            book.borrowBook(customerID);
-            borrowedBooks.add(book);
-            borrowHistory.add(book);
+            if (book.isAvailable()) {
+                book.borrowBook(customerID);
+                borrowedBooks.add(book);
+                borrowHistory.add(book);
+            } else {
+                System.out.println("Sorry, \"" + book.getTitle() + "\" is currently unavailable.");
+            }
         } else {
             System.out.println("You can only borrow up to 2 books at a time.");
         }
