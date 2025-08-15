@@ -141,4 +141,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-*Developed with ☕ and Java at National University of Sciences and Technology (NUST)*
+*Developed with ☕Java at National University of Sciences and Technology (NUST)*
